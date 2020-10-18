@@ -79,13 +79,13 @@ func (updater *MockFileUpdater) updateMockFiles(targetPath string) {
 			continue
 		}
 		defer func() {
-			err := recover()
-			if err != nil {
-				if updater.lastErrors[errorKey(*lineArgs)] != fmt.Sprint(err) {
-					fmt.Println("Error while trying to generate mock for", join(lineParts, " "), ":", err)
-					updater.lastErrors[errorKey(*lineArgs)] = fmt.Sprint(err)
-				}
-			}
+			// err := recover()
+			// if err != nil {
+			// 	if updater.lastErrors[errorKey(*lineArgs)] != fmt.Sprint(err) {
+			// 		fmt.Println("Error while trying to generate mock for", join(lineParts, " "), ":", err)
+			// 		updater.lastErrors[errorKey(*lineArgs)] = fmt.Sprint(err)
+			// 	}
+			// }
 		}()
 
 		util.PanicOnError(util.ValidateArgs(*lineArgs))

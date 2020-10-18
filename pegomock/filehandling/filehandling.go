@@ -98,11 +98,11 @@ func GenerateMockSourceCode(args []string, nameOut string, packageOut string, se
 		if len(args) != 2 {
 			log.Fatal("Expected exactly two arguments, but got " + fmt.Sprint(args))
 		}
+		pkgName := strings.ReplaceAll(args[0], "\\", "/")
 		if useExperimentalModelGen {
-			ast, err = loader.GenerateModel(args[0], args[1])
-
+			ast, err = loader.GenerateModel(pkgName, args[1])
 		} else {
-			ast, err = gomock.Reflect(args[0], strings.Split(args[1], ","))
+			ast, err = gomock.Reflect(pkgName, strings.Split(args[1], ","))
 		}
 		src = fmt.Sprintf("%v (interfaces: %v)", args[0], args[1])
 	}

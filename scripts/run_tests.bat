@@ -14,7 +14,7 @@ exit /b
 :cleanexit
 set lasterr=%errorlevel%
 call:cleanup
-exit /b %lasterr%
+exit /b %errorlevel%
 
 :main
 
@@ -25,7 +25,7 @@ if %errorlevel% neq 0 goto cleanexit
 if %errorlevel% neq 0 goto cleanexit
 
 call:cleanup
-%GOPATH%\bin\ginkgo -succinct generate_test_mocks/gomock_reflect
+%GOPATH%\bin\ginkgo-succinct generate_test_mocks/gomock_reflect
 if %errorlevel% neq 0 goto cleanexit
 %GOPATH%\bin\ginkgo --randomizeAllSpecs --randomizeSuites --race --trace -cover
 if %errorlevel% neq 0 goto cleanexit
@@ -35,5 +35,3 @@ call:cleanup
 if %errorlevel% neq 0 goto cleanexit
 %GOPATH%\bin\ginkgo --randomizeAllSpecs --randomizeSuites --race --trace -cover
 if %errorlevel% neq 0 goto cleanexit
-
-call:cleanup

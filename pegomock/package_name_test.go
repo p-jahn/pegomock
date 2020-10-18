@@ -4,14 +4,14 @@ import (
 	"go/build"
 	"os"
 
-	. "github.com/petergtz/pegomock/pegomock/testutil"
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
 	main "github.com/petergtz/pegomock/pegomock"
+	. "github.com/petergtz/pegomock/pegomock/testutil"
 )
 
-var _ = Describe("DetermineBla", func() {
+var _ = Describe("Determine package names", func() {
 	var (
 		packageDir string
 	)

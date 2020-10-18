@@ -7,3 +7,4 @@ mock_display_test.go
 *.iml
 dist
 pegomock/pegomock
+/vendor
